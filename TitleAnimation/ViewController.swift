@@ -8,6 +8,8 @@
 
 import UIKit
 
+let offsetLimit: CGFloat = 60.0
+
 class ViewController: UIViewController {
 
     @IBOutlet
@@ -48,9 +50,9 @@ class ViewController: UIViewController {
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
-        let alpha = max(min(60, offset), 0)
-        self.navigationItem.titleView?.alpha = offset/60
-        self.navigationController?.navigationBar.setBackgroundImage(imageWithColor(UIColor(white: 1.0, alpha: offset/60)), forBarMetrics: .Default)
+        let alpha = max(min(offsetLimit, offset), 0)
+        self.navigationItem.titleView?.alpha = offset/offsetLimit
+        self.navigationController?.navigationBar.setBackgroundImage(imageWithColor(UIColor(white: 1.0, alpha: offset/offsetLimit)), forBarMetrics: .Default)
 
     }
 }
